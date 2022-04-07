@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+.terminal,
+.terminal-output > :not(.raw),
+.terminal-output > :not(.raw) span:not(.fas):not(.far):not(.fa),
+.terminal-output > :not(.raw) a,
+.cmd,
+.cmd span:not(.fas):not(.far):not(.fa) {
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 25px;
+}
+
