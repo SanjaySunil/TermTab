@@ -1,5 +1,5 @@
 /* eslint-disable require-jsdoc */
-greeting = 'TermTab [Version 1.0.0]\n(c) Sanjay Sunil. All rights reserved.\n';
+greeting = 'TermTab [Version 1.1.0]\n(c) Sanjay Sunil. All rights reserved.\n';
 
 commands = [
   {
@@ -15,8 +15,12 @@ commands = [
     description: 'Clears the terminal.',
   },
   {
-    command: 'Google',
+    command: 'google [query]',
     description: 'Use Google search engine.'
+  },
+  {
+    command: 'ddg [query]',
+    description: 'Use DuckDuckGo search engine.'
   }
 ];
 
@@ -26,8 +30,6 @@ const term = $('body').terminal(
         window.location.reload();
       },
       help: function() {
-        this.echo('For more information on a specific command, type help command-name');
-
         const sorted_command_list = commands.sort(function(a, b) {
           const nameA = a.command.toUpperCase();
           const nameB = b.command.toUpperCase();
@@ -53,7 +55,14 @@ const term = $('body').terminal(
         args.forEach((i) => {
           str = str + '+' + i;
         });
-        location.href = `http://www.google.com/search?q=${str.substring(1)}`;
+        location.href = `https://www.google.com/search?q=${str.substring(1)}`;
+      },
+      ddg: function(...args) {
+        str = '';
+        args.forEach((i) => {
+          str = str + '+' + i;
+        });
+        location.href = `https://duckduckgo.com/?q=${str.substring(1)}`;
       },
     },
     {
