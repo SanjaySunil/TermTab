@@ -59,10 +59,9 @@ const term = $('body').terminal(
         });
         for (const i in sortedCommandList) {
           spaceLength = 30 - sortedCommandList[i]['command'].length;
-          console.log(space_length);
+          console.log(spaceLength);
           space = ' ';
-          // ${space.repeat(space_length)}
-          this.echo(`${sortedCommandList[i]['command']}${space.repeat(space_length)}${sortedCommandList[i]['description']}`);
+          this.echo(`${sortedCommandList[i]['command']}${space.repeat(spaceLength)}${sortedCommandList[i]['description']}`);
         }
         this.echo('');
       },
