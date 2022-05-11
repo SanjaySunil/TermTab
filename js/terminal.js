@@ -1,5 +1,5 @@
 /* eslint-disable require-jsdoc */
-greeting = 'TermTab [Version 1.2.2]\n(c) Sanjay Sunil. All rights reserved.\n';
+greeting = 'TermTab [Version 1.2.3]\n(c) Sanjay Sunil. All rights reserved.\n';
 
 commands = [
   {
