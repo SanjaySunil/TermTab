@@ -134,7 +134,7 @@ const term = $('body').terminal(
     888         888        ------------
     888         888        OS: ${navigator.platform}
     888         888        Browser: ${navigator.sayswho}
-    888         888        Resolution: ${window.screen.availWidth}x${window.screen.availWidth}
+    888         888        Resolution: ${window.screen.availWidth}x${window.screen.availHeight}
     888         888        Language: ${navigator.language}
     888         888        Browser Theme: ${getPreferredColorScheme()}
     888         888\n`.replace(new RegExp(' {' + (term.version().length + 1) + '}$'), ''),
