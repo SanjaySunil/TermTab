@@ -41,13 +41,13 @@ const term = $('body').terminal(
           }
           return 0;
         });
-
-        sorted_command_list.forEach((i) => {
-          space_length = 10 - i.command.length;
+        for (let i in sorted_command_list) {
+          space_length = 30 - sorted_command_list[i]['command'].length;
+          console.log(space_length)
           space = ' ';
-          this.echo(`${i.command}${space.repeat(space_length)}${i.description}`);
-        });
-
+          //${space.repeat(space_length)}
+          this.echo(`${sorted_command_list[i]['command']}${space.repeat(space_length)}${sorted_command_list[i]['description']}`);
+        }
         this.echo('');
       },
       google: function(...args) {
@@ -63,7 +63,7 @@ const term = $('body').terminal(
           str = str + '+' + i;
         });
         location.href = `https://duckduckgo.com/?q=${str.substring(1)}`;
-      },
+      }
     },
     {
       checkArity: false,
