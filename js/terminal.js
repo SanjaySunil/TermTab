@@ -58,10 +58,18 @@ const term = $('body').terminal(
           return 0;
         });
         for (const i in sortedCommandList) {
-          spaceLength = 30 - sortedCommandList[i]['command'].length;
-          console.log(spaceLength);
-          space = ' ';
-          this.echo(`${sortedCommandList[i]['command']}${space.repeat(spaceLength)}${sortedCommandList[i]['description']}`);
+          if (sortedCommandList !== undefined || null) {
+            spaceLength = 30 - sortedCommandList[i]['command'].length;
+            console.log(spaceLength);
+            space = ' ';
+            this.echo(
+                `${sortedCommandList[i]['command']}${space.repeat(spaceLength)}${
+                  sortedCommandList[i]['description']
+                }`,
+            );
+          } else {
+            this.echo('Could not load command list.');
+          }
         }
         this.echo('');
       },
@@ -91,29 +99,40 @@ const term = $('body').terminal(
         args.forEach((i) => {
           str = str + '+' + i;
         });
-        location.href = `https://drive.google.com/drive/search?q=${str.substring(1)}`;
+        location.href = `https://drive.google.com/drive/search?q=${str.substring(
+            1,
+        )}`;
       },
       yt: function(...args) {
         str = '';
         args.forEach((i) => {
           str = str + '+' + i;
         });
-        location.href = `https://www.youtube.com/results?search_query=${str.substring(1)}`;
+        location.href = `https://www.youtube.com/results?search_query=${str.substring(
+            1,
+        )}`;
       },
       screenfetch: function() {
         navigator.sayswho = (function() {
           const ua = navigator.userAgent;
           let tem;
-          let M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+          let M =
+          ua.match(
+              /(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i,
+          ) || [];
           if (/trident/i.test(M[1])) {
             tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
             return 'IE ' + (tem[1] || '');
           }
           if (M[1] === 'Chrome') {
             tem = ua.match(/\b(OPR|Edge)\/(\d+)/);
-            if (tem != null) return tem.slice(1).join(' ').replace('OPR', 'Opera');
+            if (tem != null) {
+              return tem.slice(1).join(' ').replace('OPR', 'Opera');
+            }
           }
-          M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
+          M = M[2] ?
+          [M[1], M[2]] :
+          [navigator.appName, navigator.appVersion, '-?'];
           if ((tem = ua.match(/version\/(\d+)/i)) != null) M.splice(1, 1, tem[1]);
           return M.join(' ');
         })();
@@ -134,10 +153,15 @@ const term = $('body').terminal(
     888         888        ------------
     888         888        OS: ${navigator.platform}
     888         888        Browser: ${navigator.sayswho}
-    888         888        Resolution: ${window.screen.availWidth}x${window.screen.availHeight}
+    888         888        Resolution: ${window.screen.availWidth}x${
+  window.screen.availHeight
+}
     888         888        Language: ${navigator.language}
     888         888        Browser Theme: ${getPreferredColorScheme()}
-    888         888\n`.replace(new RegExp(' {' + (term.version().length + 1) + '}$'), ''),
+    888         888\n`.replace(
+        new RegExp(' {' + (term.version().length + 1) + '}$'),
+        '',
+    ),
         );
       },
     },

@@ -11,5 +11,6 @@ module.exports = {
   },
   'rules': {
     'max-len': 0,
+    'camelcase': 0,
   },
 };
